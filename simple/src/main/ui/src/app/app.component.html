@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CURD</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar bg-light">
+    <div class="container-fluid justify-content-center">
+      <p class="navbar-brand">Create Update Read Delete API</p>
+    </div>
+  </nav>
+  <div class="container text-center" >
+    <button *ngIf="!isLoggedIn" class="btn btn-primary" (click)="login()" type="submit">Login</button>
+  </div>
+  <br><br><h1 class="text-center">Users</h1><br><br>
+  <div class="container row text-center">
+      <button class="btn col btn-primary" (click)="allUsers()" type="submit">Get All Users</button>
+      <button class="btn col btn-primary" (click)="usersPagination()" type="submit">Get Users</button>
+  </div>
+  <table class="table container-sm justify-content-center">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td scope="col">{{ user.id }}</td>        
+        <td scope="col">{{ user.first_name }}</td>
+        <td scope="col">{{ user.last_name }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container">
+    <div *ngIf="isLoggedIn" class="text-center">
+      <a class="btn btn-primary"(click)="logout()" href="#">Logout</a>
+    </div>
+  </div>
+</body>
+</html>
